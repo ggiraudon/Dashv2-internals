@@ -1,0 +1,45 @@
+*****************************
+Head of dash-flash-dump.bin
+*****************************
+
+73 61 6D 67 35 35 00 00  FF FF FF FF 00 02 00 00  samg55..........
+CC 48 07 00 30 2E 34 2E  31 38 32 00 00 00 00 00  ....0.4.182.....
+00 00 00 00 77 69 6E 63  00 00 00 00 F3 FF FF FF  ....winc........
+00 4B 07 00 00 50 04 00  31 39 2E 34 2E 31 30 00  .K...P..19.4.10.
+00 00 00 00 00 00 00 00  62 6C 65 00 00 00 00 00  ........ble.....
+FF FF FF FF 00 9B 0B 00  4E E9 02 00 30 2E 32 2E  ........N...0.2.
+34 30 00 00 00 00 00 00  00 00 00 00 70 77 72 74  40..........pwrt
+62 6C 00 00 FB FF FF FF  00 85 0E 00 00 32 00 00  bl...........2..
+30 2E 31 2E 30 00 00 00  00 00 00 00 00 00 00 00  0.1.0...........
+
+Target(8 bytes)	???(4 bytes)	start(4 bytes) 	length(4 bytes) version(16 bytes)
+samg55			FF FF FF FF		0x00000200		0x000748cc		0.4.182
+winc			F3 FF FF FF		0x00074b00		0x00045000		19.4.10
+ble				FF FF FF FF		0x000b9b00		0x0002e94e		0.2.40
+pwrtbl			FB FF FF FF		0x000e8500		0x00003200		0.1.0
+
+
+*****************************
+Dumping the individual images
+*****************************
+
+
+$ dd if=dash.bin of=samg55-0-4-182.bin bs=1 skip=$((0x00000200)) count=$((0x000748cc))
+477388+0 records in
+477388+0 records out
+477388 bytes (477 kB, 466 KiB) copied, 5.72079 s, 83.4 kB/s
+
+$ dd if=dash.bin of=winc-19-4-10.bin bs=1 skip=$((0x00074b00)) count=$((0x00045000))
+282624+0 records in
+282624+0 records out
+282624 bytes (283 kB, 276 KiB) copied, 3.42232 s, 82.6 kB/s
+
+$ dd if=dash.bin of=ble-0-2-40.bin bs=1 skip=$((0x000b9b00)) count=$((0x0002e94e))
+190798+0 records in
+190798+0 records out
+190798 bytes (191 kB, 186 KiB) copied, 2.37081 s, 80.5 kB/s
+
+$ dd if=dash.bin of=pwrtbl-0-1-0.bin bs=1 skip=$((0x000e8500)) count=$((0x00003200))
+12800+0 records in
+12800+0 records out
+12800 bytes (13 kB, 12 KiB) copied, 0.173612 s, 73.7 kB/s
